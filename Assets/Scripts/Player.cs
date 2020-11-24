@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     private Vector3 _moveDir = Vector3.zero;
 
     private CharacterController _controller;
+    public ParticleSystem _particles;
     public AudioSource _sound;
 
     private float _directionY;
@@ -27,6 +28,7 @@ public class Player : MonoBehaviour
     {
         _controller = GetComponent<CharacterController>();
         _sound = GetComponent<AudioSource>();
+        _particles = GetComponent<ParticleSystem>();
     }
 
     void Update()
@@ -57,6 +59,7 @@ public class Player : MonoBehaviour
                 direction.z = _moveSpeed * 10;
                 _canBulletJump = false;
                 _sound.Play();
+                _particles.Play();
                 Debug.Log("Bullet Jump");
             }
             //Jump
@@ -76,6 +79,7 @@ public class Player : MonoBehaviour
                 _canDoubleJump = false;
                 _canBulletJump = false;
                 _sound.Play();
+                _particles.Play();
                 Debug.Log("Bullet Jump");
             }
             //mid air regular jump
